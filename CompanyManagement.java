@@ -18,7 +18,6 @@ public class CompanyManagement
 		driver.get("https://dev.poonamcoatings.com");
 		driver.manage().window().maximize();
 		
-		
 		//login
 		WebElement Username=driver.findElement(By.xpath("//input[@id='email']"));
 		Username.sendKeys("admin@poonamcoatings.com");		
@@ -124,8 +123,7 @@ public class CompanyManagement
 		{
 			e.printStackTrace();
 		}
-		 driver.manage().deleteAllCookies();
-		
+		 driver.manage().deleteAllCookies();		
 	}
 	
 	
@@ -154,8 +152,7 @@ public class CompanyManagement
 		// TODO Auto-generated method stub
 		CompanyManagement obj=new CompanyManagement();
 		obj.chrome();
-		obj.companymanage();
-		
+		obj.companymanage();		
 		//obj.warehouseAdd();
 		//obj.warehouseEdit();
 		
