@@ -97,10 +97,7 @@ public class CompanyManagement
 		//Submit
 		WebElement Submit=driver.findElement(By.xpath("//button[@type='submit']"));
 		Submit.click();		
-		//Perfect Run
-		
-	
-		
+		//Perfect Run	
 	}
 	
 	public void warehouseAdd() throws InterruptedException
