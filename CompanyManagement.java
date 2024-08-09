@@ -16,7 +16,8 @@ public class CompanyManagement
 		System.setProperty("Webdriver.chromedriver","C:\\Users\\Aaditya\\Selenium3\\chromedriver.exe");		
 		driver=new ChromeDriver();
 		driver.get("https://dev.poonamcoatings.com");
-		driver.manage().window().maximize();	
+		driver.manage().window().maximize();
+		
 		
 		//login
 		WebElement Username=driver.findElement(By.xpath("//input[@id='email']"));
@@ -47,71 +48,58 @@ public class CompanyManagement
 		WebElement EditCompanyclick=driver.findElement(By.xpath("//span[@class='material-symbols-outlined small']"));
 		EditCompanyclick.click();	
 		
-		//Company form		
+		//*************Company form************//
+		
 		//NameOfCompany
 		WebElement NameOfCompany=driver.findElement(By.xpath("//input[@id='company_name']"));
-		NameOfCompany.sendKeys(Keys.CONTROL,"A", Keys.DELETE);		
-		//NameOfCompany.sendKeys("Poonam Coatings Pvt Ltd");	
-		NameOfCompany.sendKeys("ABC");			
+		NameOfCompany.sendKeys(Keys.CONTROL,"A", Keys.DELETE);	
+		NameOfCompany.sendKeys("Poonam Coatings Test");		
+		
+		//Official Email Address
+		WebElement OffEmail1=driver.findElement(By.xpath("//input[@id='email']"));		
+		OffEmail1.sendKeys(Keys.CONTROL,"A", Keys.DELETE);	
+		OffEmail1.sendKeys("testadmins@poonamcoatings.com");		
+		
+		WebElement ContactNumber=driver.findElement(By.xpath("//input[@id='contact_num']"));
+		ContactNumber.sendKeys(Keys.CONTROL,"A", Keys.DELETE);
+		ContactNumber.sendKeys("8546074056");		
 		
 		//Industry
 		WebElement Industry=driver.findElement(By.xpath("//input[@id='industry']"));
 		Industry.sendKeys(Keys.CONTROL,"A", Keys.DELETE);
-		//NameOfCompany.sendKeys("Paint");
 		Industry.sendKeys("PaintA");	
 		
 		//FoundingYear
 		WebElement FoundingYear=driver.findElement(By.xpath("//input[@id='founding_year']"));
 		FoundingYear.sendKeys(Keys.CONTROL,"A", Keys.DELETE);
-		//FoundingYear.sendKeys("2003");
-		FoundingYear.sendKeys("2004");
+		FoundingYear.sendKeys("2011");
 		
 		//GSTNumber
 		WebElement GSTNumber=driver.findElement(By.xpath("//input[@id='gst_number']"));
 		GSTNumber.sendKeys(Keys.CONTROL,"A", Keys.DELETE);
-		//GSTNumber.sendKeys("24AALFG1578L1Z1");
-		GSTNumber.sendKeys("24AALFG1578L1Z1");
+		GSTNumber.sendKeys("24AANCP9611L1ZY");
 		
 		//Addressline1
 		WebElement AddrsLine1=driver.findElement(By.xpath("//input[@id='address-line-one']"));
-		AddrsLine1.sendKeys(Keys.CONTROL,"A", Keys.DELETE);
-		//AddrsLine1.sendKeys("Vishwapuri");
-		AddrsLine1.sendKeys("Shreedhar");
+		AddrsLine1.sendKeys(Keys.CONTROL,"A", Keys.DELETE);		
+		AddrsLine1.sendKeys("Sitapur Sarai Test");
 		
 		//Addressline2
 		WebElement AddrsLine2=driver.findElement(By.xpath("//input[@id='address_line_two']"));
-		AddrsLine2.sendKeys(Keys.CONTROL,"A", Keys.DELETE);
-		//AddrsLine2.sendKeys("Netram");
-		AddrsLine2.sendKeys("Sola");		
+		AddrsLine2.sendKeys(Keys.CONTROL,"A", Keys.DELETE);		
+		AddrsLine2.sendKeys("Solatest");		
 		
 		//Pincode
 		WebElement Pincode=driver.findElement(By.xpath("//input[@id='pinCode']"));
-		Pincode.sendKeys(Keys.CONTROL,"A", Keys.DELETE);
-		//Pincode.sendKeys("382481");	
-		Pincode.sendKeys("380002");	
-		
-		//Official Email
-		WebElement OfficialEmailAdd=driver.findElement(By.xpath("//input[@id='email']"));
-		OfficialEmailAdd.sendKeys(Keys.CONTROL,"A", Keys.DELETE);
-		//OfficialEmailAdd.sendKeys("admin@poonamcoatings.com");
-		OfficialEmailAdd.sendKeys("srogfgfhg@poonamcoatings.com");	
-		
-		//Contact Number
-		WebElement ContactNumber=driver.findElement(By.xpath("//input[@id='contact_num']"));
-		ContactNumber.sendKeys(Keys.CONTROL,"A", Keys.DELETE);
-		//ContactNumber.sendKeys("8181858586");
-		ContactNumber.sendKeys("8181858546");
-		
-		//About Us
-		WebElement AboutUs=driver.findElement(By.xpath("//textarea[@id='about_us']"));
-		AboutUs.sendKeys(Keys.CONTROL,"A", Keys.DELETE);
-		//AboutUs.sendKeys("Welcome to the paint Industry of poonam Coatings, We sell Jotun and sherwinwilliam paint");
-		AboutUs.sendKeys("This is a IT company which provide the services of marketing");
-		
+		Pincode.sendKeys(Keys.CONTROL,"A", Keys.DELETE);		
+		Pincode.sendKeys("382481");	
+				
 		//Submit
 		WebElement Submit=driver.findElement(By.xpath("//button[@type='submit']"));
 		Submit.click();		
 		//Perfect Run
+		
+	
 		
 	}
 	
@@ -139,6 +127,7 @@ public class CompanyManagement
 		{
 			e.printStackTrace();
 		}
+		 driver.manage().deleteAllCookies();
 		
 	}
 	
@@ -168,9 +157,10 @@ public class CompanyManagement
 		// TODO Auto-generated method stub
 		CompanyManagement obj=new CompanyManagement();
 		obj.chrome();
-		//obj.companymanage();
+		obj.companymanage();
+		
 		//obj.warehouseAdd();
-		obj.warehouseEdit();
+		//obj.warehouseEdit();
 		
 	}
 
