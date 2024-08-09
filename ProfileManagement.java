@@ -51,7 +51,7 @@ public class ProfileManagement
         WebElement FirstName = driver.findElement(By.xpath("//input[@id='fname']"));        
         FirstName.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
         FirstName.sendKeys("Super");
-        Thread.sleep(1000);        
+        Thread.sleep(1000);       
         
         
         WebElement LastName = driver.findElement(By.xpath("//input[@id='lname']"));
@@ -72,8 +72,11 @@ public class ProfileManagement
         
         WebElement Gender = driver.findElement(By.xpath("//div[@class='direct fixedHeight']"));
         Gender.click();           
-        WebElement SelectGender=driver.findElement(By.xpath("//div[@class='drop-down-item selectedDropBox']"));
+        WebElement SelectGender=driver.findElement(By.xpath(" //span[normalize-space()='Female']"));
         SelectGender.click();
+     
+        
+      
         Thread.sleep(1000);        
         
         WebElement DOB = driver.findElement(By.xpath("//input[@id='dob']"));
