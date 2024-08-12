@@ -42,10 +42,9 @@ public class AddMultipleProductBySheet
    		Thread.sleep(8000);			
    	}
 
-    public void AddProductInventory(String ProductName, String Description, String ProductCode, String BatchNumber,
-                                    String Brand, String Category, String SubCategory, String SubChildCategory,
-                                    String Color, String PackSize, String UOM, String PaintType, String FinishType,
-                                    String HSNCode, String UnitPrice, String SellingPrice) throws InterruptedException
+    public void AddProductInventory(String ProductName, String ProductType, String ProductStandard,  String ProductCode, String HSNCode, String Description, String Brand, String Category, String SubCategory, String SubChildCategory,
+            String PackSize, String UOM, String Quantity , String Color,  String PaintType, String FinishType,
+            String UnitPrice, String SellingPrice) throws InterruptedException
     {
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -58,69 +57,107 @@ public class AddMultipleProductBySheet
             WebElement Addproductclickbutton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[normalize-space()='Add Product']")));
             Addproductclickbutton.click();
 
-            // Product Details
-            WebElement productName = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='productName']")));
-            productName.sendKeys(ProductName);
-
+            // Product Name
+            WebElement productname = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='productName']")));
+            productname.sendKeys(ProductName);
+            
+            // Product Type
+            WebElement producttype= wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='direct fixedHeight'])[1]")));
+            producttype.click();            
+            WebElement Producttypeselect = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='drop-down-item']/span[normalize-space()='" + ProductType + "']")));
+            Producttypeselect.click();
+            Thread.sleep(2000);
+                
+            //Product Standard
+            WebElement productstandard = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='direct fixedHeight'])[2]")));
+            productstandard.click();            
+            WebElement productstandardselect = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='drop-down-item']/span[normalize-space()='" + ProductStandard + "']")));
+            productstandardselect.click();
+            Thread.sleep(2000);
+                        
+            //Product code
+            WebElement productcode = driver.findElement(By.xpath("//input[@id='productCode']"));
+            productcode.sendKeys(ProductCode);
+                        
+            // HSNCode
+            WebElement hsnCode = driver.findElement(By.xpath("//input[@id='hsnCode']"));
+            hsnCode.sendKeys(HSNCode);
+            
+            try            
+            {
+                Thread.sleep(2000);
+                WebElement hsnCode1 = driver.findElement(By.xpath("//span[normalize-space()='" + HSNCode + "']"));
+                hsnCode1.click();
+            } 
+            
+            catch (Exception e)            
+            {
+                //System.out.println("HSN Code selection issue for product: " + ProductName);
+                e.printStackTrace();
+            }
+            
+            //Product Description
             WebElement description = driver.findElement(By.xpath("//textarea[@id='description']"));
             description.sendKeys(Description);
 
-            WebElement productCode = driver.findElement(By.xpath("//input[@id='productCode']"));
-            productCode.sendKeys(ProductCode);
-
-            WebElement batchNumber = driver.findElement(By.xpath("//input[@id='batchNumber']"));
-            batchNumber.sendKeys(BatchNumber);
-            Thread.sleep(2000);
-
-            // Select Brand
-            WebElement brandOption = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='direct fixedHeight']")));
+            // Product - Select Brand
+            WebElement brandOption = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='direct fixedHeight'])[3]")));
             brandOption.click();
             WebElement brandOptionclick = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='drop-down-item']/span[normalize-space()='" + Brand + "']")));
             brandOptionclick.click();
             Thread.sleep(2000);
 
             // Select Category
-            WebElement CategoryOption = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//body/div[@id='root']/div[@class='container popUp-container']/div[@class='app-container']/div[@class='home-container']/div[@class='mainExelPop show_component-common-animation']/div[@class='modelExel']/div[@class='modelEx_content singleAdd']/form[@class='scrollForm']/div[@class='form-content']/div[@class='form-group form']/div[4]/div[2]/div[1]/div[2]/div[1]")));
+            WebElement CategoryOption = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='direct fixedHeight'])[4]")));
             CategoryOption.click();
             WebElement Category1 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='drop-down-item']/span[normalize-space()='" + Category + "']")));
             Category1.click();
             Thread.sleep(2000);
 
             // Select SubCategory
-            WebElement subCategory = driver.findElement(By.xpath("//body/div[@id='root']/div[contains(@class,'container popUp-container')]/div[contains(@class,'app-container')]/div[contains(@class,'home-container')]/div[contains(@class,'mainExelPop show_component-common-animation')]/div[contains(@class,'modelExel')]/div[contains(@class,'modelEx_content singleAdd')]/form[contains(@class,'scrollForm')]/div[contains(@class,'form-content')]/div[contains(@class,'form-group form')]/div[5]/div[1]/div[1]/div[2]/div[1]"));
+            WebElement subCategory = driver.findElement(By.xpath("(//div[@class='direct fixedHeight'])[5]"));
             subCategory.click();
             WebElement subCategory1 = driver.findElement(By.xpath("//span[normalize-space()='" + SubCategory + "']"));
             subCategory1.click();
-            Thread.sleep(2000);
-
-            // Handle Color
-            try 
-            {
-                WebElement color = driver.findElement(By.xpath("//input[@id='color']"));
-                color.sendKeys(Color);
-                Thread.sleep(6000); // Wait for color options to load
-                
-                WebElement color1 = driver.findElement(By.xpath("//div[@class=\"drop-down-item2\"]//span[text()=\"" + Color + "\"]"));
-                color1.click();
-            } 
-            
-            catch (Exception e) 
-            {
-                System.out.println("Color selection issue for product: " + ProductName);
-                e.printStackTrace();
-            }
+            Thread.sleep(2000);          
 
             // PackSize
             WebElement packsize = driver.findElement(By.xpath("//input[@id='packSize']"));
             packsize.sendKeys(PackSize);
-            Thread.sleep(2000);
+            Thread.sleep(2000);           
+            
+//          // UOM
+//          WebElement uom = driver.findElement(By.xpath("//div[@class='direct ']"));
+//          uom.click();
+//          WebElement uom1 = driver.findElement(By.xpath("//div[@class='col-2']//div[8]"));
+//          uom1.click();            
+            
+            //Pack Quantity
+            WebElement quantity = driver.findElement(By.xpath("//input[@id='packQuantity']"));
+            quantity.sendKeys(Quantity);            
+            
+            //Handle Color
+            try 
+            {
+                WebElement color = driver.findElement(By.xpath("//input[@id='color']"));
+                color.click();
+                Thread.sleep(2000);
+               
+                
+                WebElement color1 = driver.findElement(By.xpath("//div[@class='drop-down-item2 selectedDropBox'] //span[normalize-space()='" + Color + "']"));
+                color1.click();                
+               
+               
+                
+                     } 
+            
+            catch (Exception e) 
+            {
+               // System.out.println("Color selection issue for product: " + ProductName);
+                e.printStackTrace();
+            }
 
-            // UOM
-            WebElement uom = driver.findElement(By.xpath("//div[@class='direct ']"));
-            uom.click();
-            WebElement uom1 = driver.findElement(By.xpath("//div[@class='col-2']//div[8]"));
-            uom1.click();
-
+           
             // Handle PaintType
             try 
             {
@@ -143,6 +180,7 @@ public class AddMultipleProductBySheet
                 WebElement finishType = driver.findElement(By.xpath("//input[@id='finish']"));
                 finishType.sendKeys(FinishType);
                 Thread.sleep(2000); // Wait for finish type options to load
+               
                 WebElement finishType1 = driver.findElement(By.xpath("//span[normalize-space()='" + FinishType + "']"));
                 finishType1.click();
             }
@@ -151,40 +189,30 @@ public class AddMultipleProductBySheet
                 System.out.println("Finish type selection issue for product: " + ProductName);
                 e.printStackTrace();
             }
-
-            // HSNCode
-            WebElement hsnCode = driver.findElement(By.xpath("//input[@id='hsnCode']"));
-            hsnCode.sendKeys(HSNCode);
-            try            
-            {
-                Thread.sleep(2000);
-                WebElement hsnCode1 = driver.findElement(By.xpath("//span[normalize-space()='" + HSNCode + "']"));
-                hsnCode1.click();
-            } 
             
-            catch (Exception e)            
-            {
-                System.out.println("HSN Code selection issue for product: " + ProductName);
-                e.printStackTrace();
-            }
 
             // UnitPrice
             WebElement unitPrice = driver.findElement(By.xpath("//input[@id='unitPrice']"));
             unitPrice.sendKeys(UnitPrice);
 
-            // SellingPrice
-            WebElement sellingPrice = driver.findElement(By.xpath("//input[@id='sellingPrice']"));
-            sellingPrice.sendKeys(SellingPrice);
+//            // SellingPrice
+//            WebElement sellingPrice = driver.findElement(By.xpath("//input[@id='sellingPrice']"));
+//            sellingPrice.sendKeys(SellingPrice);
             
             // Save Button
-            WebElement savebutton = driver.findElement(By.xpath("//button[@type='submit']"));
-            savebutton.click();
-            Thread.sleep(2000); // Ensure enough time for the save operation
+            WebElement savebutton1 = driver.findElement(By.xpath("//button[@type='submit']"));
+            savebutton1.click();
+            
+          //  Thread.sleep(2000); // Ensure enough time for the save operation
         }
          catch(Exception e)
          {
         	 e.printStackTrace();
-         }}
+         }
+        
+    }
+    
+    
        
     public void addMulProductFromExcel(String excelFilePath) throws IOException, InterruptedException 
     {
@@ -192,31 +220,30 @@ public class AddMultipleProductBySheet
 
         try (Workbook workbook = new XSSFWorkbook(inputStream)) 
         {
-            Sheet sheet1 = workbook.getSheetAt(0);
+            Sheet sheet2 = workbook.getSheetAt(0);
             DataFormatter dataFormatter = new DataFormatter();
-            for (int i = 1; i <= sheet1.getLastRowNum(); i++)
+            for (int i = 1; i <= sheet2.getLastRowNum(); i++)
             {
-                Row row = sheet1.getRow(i);
+                Row row = sheet2.getRow(i);
                 String ProductName = dataFormatter.formatCellValue(row.getCell(0));
-                String Description = dataFormatter.formatCellValue(row.getCell(1));
-                String ProductCode = dataFormatter.formatCellValue(row.getCell(2));
-                String BatchNumber = dataFormatter.formatCellValue(row.getCell(3));
-                String Brand = dataFormatter.formatCellValue(row.getCell(4));
-                String Category = dataFormatter.formatCellValue(row.getCell(5));
-                String SubCategory = dataFormatter.formatCellValue(row.getCell(6));
-                String SubChildCategory = dataFormatter.formatCellValue(row.getCell(7));
-                String Color = dataFormatter.formatCellValue(row.getCell(8));
-                String PackSize = dataFormatter.formatCellValue(row.getCell(9));
-                String UOM = dataFormatter.formatCellValue(row.getCell(10));
-                String PaintType = dataFormatter.formatCellValue(row.getCell(11));
-                String FinishType = dataFormatter.formatCellValue(row.getCell(12));
-                String HSNCode = dataFormatter.formatCellValue(row.getCell(13));
-                String UnitPrice = dataFormatter.formatCellValue(row.getCell(14));
-                String SellingPrice = dataFormatter.formatCellValue(row.getCell(15));
-
-                AddProductInventory(ProductName, Description, ProductCode, BatchNumber, Brand, Category,
-                                    SubCategory, SubChildCategory, Color, PackSize, UOM, PaintType, FinishType,
-                                    HSNCode, UnitPrice, SellingPrice);
+                String ProductType = dataFormatter.formatCellValue(row.getCell(1));
+                String ProductStandard = dataFormatter.formatCellValue(row.getCell(2));
+                String ProductCode = dataFormatter.formatCellValue(row.getCell(3));
+                String HSNCode = dataFormatter.formatCellValue(row.getCell(4));
+                String Description = dataFormatter.formatCellValue(row.getCell(5));
+                String Brand = dataFormatter.formatCellValue(row.getCell(6));
+                String Category = dataFormatter.formatCellValue(row.getCell(7));
+                String SubCategory = dataFormatter.formatCellValue(row.getCell(8));
+                String SubChildCategory = dataFormatter.formatCellValue(row.getCell(9));
+                String PackSize = dataFormatter.formatCellValue(row.getCell(10));
+                String UOM = dataFormatter.formatCellValue(row.getCell(11));
+                String Quantity = dataFormatter.formatCellValue(row.getCell(12));             
+                String Color = dataFormatter.formatCellValue(row.getCell(13));
+                String PaintType = dataFormatter.formatCellValue(row.getCell(14));
+                String FinishType = dataFormatter.formatCellValue(row.getCell(15));
+                String UnitPrice = dataFormatter.formatCellValue(row.getCell(16));
+                String SellingPrice = dataFormatter.formatCellValue(row.getCell(17));
+                AddProductInventory(ProductName, ProductType, ProductStandard, ProductCode, HSNCode, Description, Brand, Category, SubCategory, SubChildCategory, PackSize, UOM, Quantity, Color, PaintType, FinishType, UnitPrice, SellingPrice);
             }
         }
     }

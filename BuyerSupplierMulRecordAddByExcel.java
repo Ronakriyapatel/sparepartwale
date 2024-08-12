@@ -16,7 +16,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
-
 public class BuyerSupplierMulRecordAddByExcel 
 {
 	 WebDriver driver;
@@ -37,9 +36,7 @@ public class BuyerSupplierMulRecordAddByExcel
 			
 			WebElement Login=driver.findElement(By.xpath("//button[@type='submit']"));
 			Login.click();	
-			Thread.sleep(8000);	
-			
-			
+			Thread.sleep(8000);				
 		}
 	 
 	 public void AddBuyersandSuplliers(String Fullname, String Phone, String Email, String Nameofcompany, String CompanyrefId, String Officialemailadd, String Companycontactno, String	Gst, String	Companytype, String Creditlimit, String Paidduration, String Addresslocation1, String Addresslocation2, String Pincode, String Salesperson)

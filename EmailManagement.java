@@ -1,6 +1,7 @@
 package Testing;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -39,7 +40,7 @@ public class EmailManagement
 		Thread.sleep(4000);
 				
 		//Click on EmailManagement
-		WebElement EmailManagementclick=driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/div[10]/div[4]"));
+		WebElement EmailManagementclick=driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/div[12]/div[4]"));
 		EmailManagementclick.click();		
 		
 		//Add new email		
@@ -49,14 +50,17 @@ public class EmailManagement
 		
 		//Title		
 		WebElement Title=driver.findElement(By.xpath("//input[@id='title']"));
-		Title.sendKeys("titleTitle Testing1");
-				
+		Title.sendKeys(Keys.CONTROL,"A", Keys.DELETE);
+		Title.sendKeys("Title Testing1");
+		
 		//Subject		
 		WebElement Subject=driver.findElement(By.xpath("//input[@id='subject']"));
+		Subject.sendKeys(Keys.CONTROL,"A",Keys.DELETE);
 		Subject.sendKeys("Testing Purpose2");
 		
 		//Description		
 		WebElement Description=driver.findElement(By.xpath("//div[@class='ql-editor ql-blank']"));
+		Description.sendKeys(Keys.CONTROL,"A",Keys.DELETE);
 		Description.sendKeys("fgdfg this is a content of the description of email management");
 		
 		WebElement Submit=driver.findElement(By.xpath("//button[@type='submit']"));

@@ -47,8 +47,7 @@ public class CompanyManagement
 		WebElement EditCompanyclick=driver.findElement(By.xpath("//span[@class='material-symbols-outlined small']"));
 		EditCompanyclick.click();	
 		
-		//*************Company form************//
-		
+		//*************Company form************//		
 		//NameOfCompany
 		WebElement NameOfCompany=driver.findElement(By.xpath("//input[@id='company_name']"));
 		NameOfCompany.sendKeys(Keys.CONTROL,"A", Keys.DELETE);	
@@ -127,6 +126,78 @@ public class CompanyManagement
 	}
 	
 	
+	public void BankDetailsAdd() throws InterruptedException
+	{
+		//Add Bank Details
+		
+		WebElement AddBankDetails=driver.findElement(By.xpath("//div[3]//div[1]//div[1]//button[1]//span[2]"));
+		AddBankDetails.click();
+		
+		WebElement BankName=driver.findElement(By.xpath("//input[@id='bankName']"));
+		BankName.sendKeys("BOB");	
+		
+		WebElement BranchName=driver.findElement(By.xpath("//input[@id='branch']"));
+		BranchName.sendKeys("Sola Bahgvat");
+		
+		WebElement AccNo=driver.findElement(By.xpath("//input[@id='accountNo']"));
+		AccNo.click();
+		AccNo.sendKeys("687687686741");
+		
+		WebElement ACtype=driver.findElement(By.xpath("//div[@class='direct fixedHeight']"));
+		ACtype.click();
+		WebElement ACtypeselect=driver.findElement(By.xpath("//div[@class='drop-down-menu']//div[2]"));		
+		ACtypeselect.click();
+		//ACtypeselect.sendKeys("saving");	
+
+		WebElement IFSC=driver.findElement(By.xpath("//input[@id='ifsc']"));
+		IFSC.sendKeys("BARB0ABRBUL");
+		
+		WebElement ACHolderName=driver.findElement(By.xpath("//input[@id='accountHolderName']"));
+		ACHolderName.sendKeys("Kashish");
+		
+		WebElement submit=driver.findElement(By.xpath("//button[normalize-space()='SUBMIT']"));
+		submit.click();			
+	}
+	
+	public void BankDetailsEdit() throws InterruptedException
+	{
+		//Add Bank Details	
+		//Click on bank details		
+		
+		WebElement ClickBankDetails1=driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[2]/div[3]/div[1]/div[2]/div[1]"));
+		ClickBankDetails1.click();			
+		
+		WebElement EditBankDetails=driver.findElement(By.xpath("//button[@class='btn-primary']"));
+		EditBankDetails.click();
+		
+		WebElement EditBankName=driver.findElement(By.xpath("//input[@id='bankName']"));
+		EditBankName.sendKeys("BOB");	
+		
+		WebElement EditBranchName=driver.findElement(By.xpath("//input[@id='branch']"));
+		EditBranchName.sendKeys("Sola Bahgvat");
+		
+		WebElement EditAccNo=driver.findElement(By.xpath("//input[@id='accountNo']"));
+		EditAccNo.click();
+		EditAccNo.sendKeys("687687686741");
+		
+		WebElement EditACtype=driver.findElement(By.xpath("//div[@class='direct fixedHeight']"));
+		EditACtype.click();
+		WebElement EditACtypeselect=driver.findElement(By.xpath("//div[@class='drop-down-menu']//div[2]"));		
+		EditACtypeselect.click();
+		//ACtypeselect.sendKeys("saving");	
+
+		WebElement EditIFSC=driver.findElement(By.xpath("//input[@id='ifsc']"));
+		EditIFSC.sendKeys("BARB0ABRBUL");
+		
+		WebElement EditACHolderName=driver.findElement(By.xpath("//input[@id='accountHolderName']"));
+		EditACHolderName.sendKeys("Kashish");
+		
+		WebElement submit=driver.findElement(By.xpath("//button[normalize-space()='SUBMIT']"));
+		submit.click();	
+		
+		//not perfect
+	}
+	
 	public void warehouseEdit() throws InterruptedException
 	{			
 		
@@ -149,10 +220,13 @@ public class CompanyManagement
 		
 	public static void main(String[] args) throws InterruptedException
 	{
-		// TODO Auto-generated method stub
+
 		CompanyManagement obj=new CompanyManagement();
 		obj.chrome();
-		obj.companymanage();		
+		//obj.companymanage();
+		//obj.BankDetailsAdd();
+		obj.BankDetailsEdit();
+		Thread.sleep(2000);
 		//obj.warehouseAdd();
 		//obj.warehouseEdit();
 		

@@ -365,7 +365,7 @@ WebDriver driver;
 	{
 	// TODO Auto-generated method stub
 	ProductCatalogueAdd obj = new ProductCatalogueAdd();
-//	obj.chrome();
+	obj.chrome();
 //	obj.Addbrand();
 //	obj.AddCategory();
 //	obj.AddSubCategory();
