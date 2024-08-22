@@ -79,7 +79,7 @@ public class AddMultipleProductBySheet
             WebElement productcode = driver.findElement(By.xpath("//input[@id='productCode']"));
             productcode.sendKeys(ProductCode);
                         
-            // HSNCode
+            //HSNCode
             WebElement hsnCode = driver.findElement(By.xpath("//input[@id='hsnCode']"));
             hsnCode.sendKeys(HSNCode);
             
@@ -126,12 +126,12 @@ public class AddMultipleProductBySheet
             packsize.sendKeys(PackSize);
             Thread.sleep(2000);           
             
-//          // UOM
-//          WebElement uom = driver.findElement(By.xpath("//div[@class='direct ']"));
-//          uom.click();
-//          WebElement uom1 = driver.findElement(By.xpath("//div[@class='col-2']//div[8]"));
-//          uom1.click();            
-            
+			// UOM
+			// WebElement uom = driver.findElement(By.xpath("//div[@class='direct ']"));
+			// uom.click();
+			// WebElement uom1 = driver.findElement(By.xpath("//div[@class='col-2']//div[8]"));
+			// uom1.click();            
+			            
             //Pack Quantity
             WebElement quantity = driver.findElement(By.xpath("//input[@id='packQuantity']"));
             quantity.sendKeys(Quantity);            
@@ -141,15 +141,12 @@ public class AddMultipleProductBySheet
             {
                 WebElement color = driver.findElement(By.xpath("//input[@id='color']"));
                 color.click();
-                Thread.sleep(2000);
-               
+                Thread.sleep(2000);            
                 
                 WebElement color1 = driver.findElement(By.xpath("//div[@class='drop-down-item2 selectedDropBox'] //span[normalize-space()='" + Color + "']"));
-                color1.click();                
+                color1.click();                  
                
-               
-                
-                     } 
+            } 
             
             catch (Exception e) 
             {
@@ -204,16 +201,16 @@ public class AddMultipleProductBySheet
             savebutton1.click();
             
           //  Thread.sleep(2000); // Ensure enough time for the save operation
-        }
-         catch(Exception e)
+    		}
+         
+    catch(Exception e)
          {
         	 e.printStackTrace();
          }
         
     }
     
-    
-       
+          
     public void addMulProductFromExcel(String excelFilePath) throws IOException, InterruptedException 
     {
         FileInputStream inputStream = new FileInputStream("C:\\Users\\Aaditya\\eclipse-workspace\\PoonamCoatingsCRM\\src\\Testing\\Product Sheet.xlsx");
