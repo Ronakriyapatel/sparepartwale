@@ -103,7 +103,6 @@ public class AddEmailFromExcel
             Thread.sleep(2000);           
         }
         
-        
         System.out.println("Record added successfully");
         workbook.close();
         inputStream.close();

@@ -57,40 +57,38 @@ public class BuyersandSuppliers
         WebElement singleCompanyAdd = driver.findElement(By.xpath("//span[normalize-space()='Add Single Company']"));
         singleCompanyAdd.click();
         
-        
-
         // ***********Personal Info***********
         WebElement name = driver.findElement(By.xpath("//input[@id='name']"));
-        name.sendKeys("Tanvi");
+        name.sendKeys("Tanvi11");
         Thread.sleep(1000);
 
         WebElement phone = driver.findElement(By.xpath("//input[@id='mobile_no']"));
-        phone.sendKeys("9012143284");
+        phone.sendKeys("9012123284");
         Thread.sleep(1000);
 
         WebElement email = driver.findElement(By.xpath("//input[@id='email']"));
-        email.sendKeys("hfddftel@gmail.com");
+        email.sendKeys("hfddsedftel@gmail.com");
         Thread.sleep(1000);
 
         // ********Company Details***********
         WebElement nameOfCompany = driver.findElement(By.xpath("//input[@id='company_name']"));
-        nameOfCompany.sendKeys("kdprdftel");
+        nameOfCompany.sendKeys("askdprdftel");
         Thread.sleep(1000);
 
         WebElement comRefId = driver.findElement(By.xpath("//input[@id='company_ref_id']"));
-        comRefId.sendKeys("4324c63");
+        comRefId.sendKeys("4324163");
         Thread.sleep(1000);
 
         WebElement officialEmail = driver.findElement(By.xpath("//input[@id='company_email']"));
-        officialEmail.sendKeys("roupodopatel@gmail.com");
+        officialEmail.sendKeys("rodepodopatel@gmail.com");
         Thread.sleep(1000);
 
         WebElement companyContact = driver.findElement(By.xpath("//input[@id='company_num']"));
-        companyContact.sendKeys("94767777");
+        companyContact.sendKeys("9346777437");
         Thread.sleep(1000);
 
         WebElement gst = driver.findElement(By.xpath("//input[@id='gst_number']"));
-        gst.sendKeys("22AAAAA9001A3Z5");
+        gst.sendKeys("22AAAAA9801A3Z5");
         Thread.sleep(1000);
 
         WebElement companyTypeDd = driver.findElement(By.xpath("//div[@class='drop-down-main drop-down-main-large']//div[contains(@class,'direct')]"));
@@ -100,27 +98,27 @@ public class BuyersandSuppliers
         Thread.sleep(1000);
         
         WebElement creditlimit = driver.findElement(By.xpath("//input[@id='creditLimit']"));
-        creditlimit.sendKeys("300000");
+        creditlimit.sendKeys("350000");
         
         WebElement paydurationinday = driver.findElement(By.xpath("//input[@id='payDate']"));
-        paydurationinday.sendKeys("60");
+        paydurationinday.sendKeys("80");
         
 
         WebElement address1 = driver.findElement(By.xpath("//input[@id='address-line-one']"));
-        address1.sendKeys("Shreetdhar geet Appt.");
+        address1.sendKeys("Shreetdhar dsda geet Appt.");
         Thread.sleep(1000);
 
         WebElement address2 = driver.findElement(By.xpath("//input[@id='address_line_two']"));
-        address2.sendKeys("Sola Bhagwat rd");
+        address2.sendKeys("Sola Bhdasdagwat rd");
         Thread.sleep(1000);
 
         WebElement pincode = driver.findElement(By.xpath("//input[@id='pinCode']"));
         pincode.sendKeys("382481");
         Thread.sleep(1000);
         
-        WebElement salespersonname = driver.findElement(By.xpath("//input[@id='handlerName']"));
-        salespersonname.sendKeys("Roshni");
-        Thread.sleep(1000);
+//        WebElement salespersonname = driver.findElement(By.xpath("//input[@id='handlerName']"));
+//        salespersonname.sendKeys("Roshni");
+//        Thread.sleep(1000);
 
         WebElement mark = driver.findElement(By.xpath("//div[@class='input-field checkbox-permission-input-field']//span[@class='filter-check-background']"));
         mark.click();

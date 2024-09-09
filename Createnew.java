@@ -21,7 +21,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class Createnew 
 {
 	
-	private static final String Category = null;
 	WebDriver driver;
 
     public void chrome() throws InterruptedException
@@ -40,16 +39,16 @@ public class Createnew
    		
    		WebElement Login=driver.findElement(By.xpath("//button[@type='submit']"));
    		Login.click();	
-   		
    		Thread.sleep(8000);			
    	}
     
     public void addNewProduct(String paintName, String productStd, String productCode, String hsnCode, 
             String brand, String category, String subCategory, String subChildCategory, 
             String basePaint1, String proportionOfPaint1, String tinter1, 
-            String proportionOfTinter, String basePaint2, String proportionOfPaint2, 
-            String color, String paintType, String finishType) throws InterruptedException 
-    	{
+            String proportionOfTinter , String basePaint2, String proportionOfPaint2, String PackSize,
+            String Prodqty, String color, String paintType, String finishType) throws InterruptedException 
+       {
+    	
     	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
     	// Navigate to Product Page
@@ -90,70 +89,94 @@ public class Createnew
     	WebElement brandOption = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='direct fixedHeight'])[2]")));
     	brandOption.click();
     	WebElement brandOptionClick = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='drop-down-item']/span[normalize-space()='" + brand + "']")));
-    	brandOptionClick.click();
-    	
-		// WebElement Category = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class=\"direct fixedHeight\"][3]")));
-		// Category.sendKeys(category);    	
-		// WebElement categorySelect = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='drop-down-item']/span[normalize-space()='" + category + "']")));
-		// categorySelect.click();
-		   	    	
-    	   	
-    	// Select Category
-        WebElement CategoryOption = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='direct fixedHeight'])[3]")));
-        CategoryOption.click();  
-        
-        WebElement Categoryselect = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='drop-down-item']/span[normalize-space()='" + Category + "']")));
-        Categoryselect.click();
-        Thread.sleep(2000);
-                
-    	try
-    	{
-    		//SubCategory
-        	WebElement subCategoryOption = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='direct fixedHeight'])[4]")));
-        	subCategoryOption.click();        	
-        	WebElement subCategorySelect = driver.findElement(By.xpath("//div[@class='drop-down-item']/span[normalize-space()= '" + subCategory + "']"));
-        	subCategorySelect.sendKeys(subCategory);        	
-    	}    	
-    	catch(Exception e)
-    	{
-    		e.printStackTrace();
-    		Thread.sleep(2000);
-    	}
-   	 	
-   	    //Base Paint 1    	
-    	//Proportion of Paint 1
-    	
-    	WebElement BasePaint1 = driver.findElement(By.id("basePaint1"));
-    	BasePaint1.sendKeys(basePaint1);   
-    	Thread.sleep(3000);
-    	
-    	WebElement Prop1 = driver.findElement(By.id("proportionPaint1"));
-    	Prop1.sendKeys(proportionOfPaint1);    	
-   	   
-//   	WebElement tinter = driver.findElement(By.xpath("//input[@id='tinters1']"));
-//   	tinter.sendKeys(Tinter1);    	 
-//   	Thread.sleep(2000);  
-    	
-//    	//Base Paint 1    	
-//    	//Proportion of Paint 1
-    	
-//    	WebElement BasePaint1 = driver.findElement(By.id("basePaint1"));
-//    	BasePaint1.sendKeys(basePaint1);   
-//    	Thread.sleep(3000);
-   	
-//    	WebElement Prop1 = driver.findElement(By.id("proportionPaint1"));
-//    	Prop1.sendKeys(proportionOfPaint1);
-   	
-//    	//Tinter 1
-//    	WebElement Tinter1 = driver.findElement(By.id("tinters1"));
-//    	Tinter1.sendKeys(tinter1);    	    	
-    	    	   	 
-//    	WebElement PropTinter=driver.findElement(By.id("proportionTinters"));
-//    	PropTinter.sendKeys(proportionOfTinter);    	
-    	}
+    	brandOptionClick.click();    	
 
+    	//Category
+    	WebElement CategoryOption = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='direct fixedHeight'])[3]")));
+    	CategoryOption.click();
+    	WebElement Categoryselect = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='drop-down-item']/span[normalize-space()='" + category + "']")));
+    	Categoryselect.click();
+         
+        //SubCategory Selection       
+        WebElement subCategoryOption = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='direct fixedHeight'])[4]")));
+        subCategoryOption.click();
+        WebElement subCategorySelect = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='drop-down-item']/span[normalize-space()='" + subCategory + "']")));
+        subCategorySelect.click();
+       	
+        //Base Paint Component 1    	
+        WebElement basepaint1 = driver.findElement(By.xpath("//input[@id='basePaint1']"));
+        basepaint1.sendKeys(basePaint1);  
+         	    	 
+        WebElement Propaint1 = driver.findElement(By.xpath("//input[@id='proportionPaint1']"));
+        Propaint1.sendKeys(proportionOfPaint1);  
+              
+        WebElement tinter = driver.findElement(By.xpath("//input[@id='tinters1']"));
+        tinter.sendKeys(tinter1);          
+        
+        WebElement proptinter1 = driver.findElement(By.xpath("//input[@id='proportionTinters']"));
+        proptinter1.sendKeys(proportionOfTinter);    
+        
+        //Base Paint Component 2  	           
+        WebElement basepaint2 = driver.findElement(By.xpath("//input[@id='basePaint2']"));
+        basepaint2.sendKeys(basePaint2);    	 
+                 
+        WebElement basepaint2select = driver.findElement(By.xpath("//input[@id='proportionPaint2']"));
+        basepaint2select.sendKeys(proportionOfPaint2);
+        
+        //PackSize
+        WebElement packsize = driver.findElement(By.xpath("//input[@id='packSize']"));
+        packsize.sendKeys(PackSize);
+        Thread.sleep(2000);     
+        
+        //Handle Color
+        try 
+        {
+            WebElement color1 = driver.findElement(By.xpath("//input[@id='color']"));
+            color1.sendKeys(color);
+            Thread.sleep(2000);              
+            // WebElement color1select = driver.findElement(By.xpath("//div[@class='drop-down-item2 selectedDropBox'] //span[normalize-space()='" + color + "']"));
+            // color1select.click();                
+        } 
+        
+        catch (Exception e) 
+        {
+           // System.out.println("Color selection issue for product: " + ProductName);
+            e.printStackTrace();
+        }
+
+        
+        // Handle PaintType
+        try 
+        {
+            WebElement paintType1 = driver.findElement(By.xpath("//input[@id='paintType']"));
+            paintType1.sendKeys(paintType);            
+            Thread.sleep(2000); 
+            
+        } 
+        
+        catch (Exception e) 
+        {
+            e.printStackTrace();
+        }
+
+        // Handle FinishType
+        try            
+        {
+            WebElement finishType1 = driver.findElement(By.xpath("//input[@id='finish']"));
+            finishType1.sendKeys(finishType);           
+            
+        }
+        catch (Exception e) 
+        {
+            
+           e.printStackTrace();
+        }         
+             
+  	}
+        
     public void CreateMulProductFromExcel(String excelFilePath) throws IOException, InterruptedException 
     {
+   
     FileInputStream inputStream = new FileInputStream("C:\\Users\\Aaditya\\eclipse-workspace\\PoonamCoatingsCRM\\src\\Testing\\CreateNewProduct.xlsx");
 
     try (Workbook workbook = new XSSFWorkbook(inputStream)) 
@@ -178,23 +201,24 @@ public class Createnew
             String Tinter1 = dataFormatter.formatCellValue(row.getCell(10));
             String ProportionOfTinter = dataFormatter.formatCellValue(row.getCell(11));
             String BasePaint2 = dataFormatter.formatCellValue(row.getCell(12));
-            String ProportionOfPaint2 = dataFormatter.formatCellValue(row.getCell(13));     
-            String Color = dataFormatter.formatCellValue(row.getCell(14));
-            String PaintType = dataFormatter.formatCellValue(row.getCell(15));
-            String FinishType = dataFormatter.formatCellValue(row.getCell(16));           
+            String ProportionOfPaint2 = dataFormatter.formatCellValue(row.getCell(13));  
+            String Packsize = dataFormatter.formatCellValue(row.getCell(14));  
+            String Prodqty = dataFormatter.formatCellValue(row.getCell(15));  
+            String Color = dataFormatter.formatCellValue(row.getCell(16));
+            String PaintType = dataFormatter.formatCellValue(row.getCell(17));
+            String FinishType = dataFormatter.formatCellValue(row.getCell(18));           
             
-            addNewProduct(PaintName, ProductStd, ProductCode, HSNCode, Brand, Category, SubCategory, SubChildCategory, BasePaint1,  
-            		 ProportionOfPaint1, Tinter1, ProportionOfTinter, BasePaint2, ProportionOfPaint2, Color, PaintType, FinishType);    	  
+            addNewProduct(PaintName, ProductStd, ProductCode, HSNCode, Brand, Category, SubCategory, SubChildCategory, 
+            		BasePaint1, ProportionOfPaint1, Tinter1, ProportionOfTinter, BasePaint2, ProportionOfPaint2, Packsize, Prodqty, Color, PaintType, FinishType);    	  
         }
-    }
-        
+    	
+    }        
         catch(Exception e)
         {
         	e.printStackTrace();
         }
     
 	}
-
     
     public static void main(String[] args) throws InterruptedException, IOException
 	{

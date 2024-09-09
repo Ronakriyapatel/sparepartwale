@@ -66,6 +66,8 @@ public class AddMultipleProductBySheet
             producttype.click();            
             WebElement Producttypeselect = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='drop-down-item']/span[normalize-space()='" + ProductType + "']")));
             Producttypeselect.click();
+            
+         
             Thread.sleep(2000);
                 
             //Product Standard
@@ -103,6 +105,7 @@ public class AddMultipleProductBySheet
             // Product - Select Brand
             WebElement brandOption = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='direct fixedHeight'])[3]")));
             brandOption.click();
+            
             WebElement brandOptionclick = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='drop-down-item']/span[normalize-space()='" + Brand + "']")));
             brandOptionclick.click();
             Thread.sleep(2000);
@@ -114,12 +117,12 @@ public class AddMultipleProductBySheet
             Category1.click();
             Thread.sleep(2000);
 
-            // Select SubCategory
-            WebElement subCategory = driver.findElement(By.xpath("(//div[@class='direct fixedHeight'])[5]"));
-            subCategory.click();
-            WebElement subCategory1 = driver.findElement(By.xpath("//span[normalize-space()='" + SubCategory + "']"));
-            subCategory1.click();
-            Thread.sleep(2000);          
+//            // Select SubCategory
+//            WebElement subCategory = driver.findElement(By.xpath("(//div[@class='direct fixedHeight'])[5]"));
+//            subCategory.click();
+//            WebElement subCategory1 = driver.findElement(By.xpath("//span[normalize-space()='" + SubCategory + "']"));
+//            subCategory1.click();
+//            //   Thread.sleep(2000);          
 
             // PackSize
             WebElement packsize = driver.findElement(By.xpath("//input[@id='packSize']"));
@@ -150,7 +153,7 @@ public class AddMultipleProductBySheet
             
             catch (Exception e) 
             {
-               // System.out.println("Color selection issue for product: " + ProductName);
+                System.out.println("Color selection issue for product: " + ProductName);
                 e.printStackTrace();
             }
 
@@ -192,15 +195,15 @@ public class AddMultipleProductBySheet
             WebElement unitPrice = driver.findElement(By.xpath("//input[@id='unitPrice']"));
             unitPrice.sendKeys(UnitPrice);
 
-//            // SellingPrice
-//            WebElement sellingPrice = driver.findElement(By.xpath("//input[@id='sellingPrice']"));
-//            sellingPrice.sendKeys(SellingPrice);
+//          // SellingPrice
+//          WebElement sellingPrice = driver.findElement(By.xpath("//input[@id='sellingPrice']"));
+//          sellingPrice.sendKeys(SellingPrice);
             
             // Save Button
             WebElement savebutton1 = driver.findElement(By.xpath("//button[@type='submit']"));
             savebutton1.click();
             
-          //  Thread.sleep(2000); // Ensure enough time for the save operation
+            // Thread.sleep(2000); // Ensure enough time for the save operation
     		}
          
     catch(Exception e)
@@ -217,11 +220,11 @@ public class AddMultipleProductBySheet
 
         try (Workbook workbook = new XSSFWorkbook(inputStream)) 
         {
-            Sheet sheet2 = workbook.getSheetAt(0);
+            Sheet Sheet1 = workbook.getSheetAt(0);
             DataFormatter dataFormatter = new DataFormatter();
-            for (int i = 1; i <= sheet2.getLastRowNum(); i++)
+            for (int i = 1; i < Sheet1.getLastRowNum(); i++)
             {
-                Row row = sheet2.getRow(i);
+                Row row = Sheet1.getRow(i);
                 String ProductName = dataFormatter.formatCellValue(row.getCell(0));
                 String ProductType = dataFormatter.formatCellValue(row.getCell(1));
                 String ProductStandard = dataFormatter.formatCellValue(row.getCell(2));

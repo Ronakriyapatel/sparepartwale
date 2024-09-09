@@ -51,17 +51,17 @@ public class EmailManagement
 		//Title		
 		WebElement Title=driver.findElement(By.xpath("//input[@id='title']"));
 		Title.sendKeys(Keys.CONTROL,"A", Keys.DELETE);
-		Title.sendKeys("Title Testing1");
+		Title.sendKeys("Title Testing1eqwe");
 		
 		//Subject		
 		WebElement Subject=driver.findElement(By.xpath("//input[@id='subject']"));
 		Subject.sendKeys(Keys.CONTROL,"A",Keys.DELETE);
-		Subject.sendKeys("Testing Purpose2");
+		Subject.sendKeys("Testing Purposeweq2");
 		
 		//Description		
 		WebElement Description=driver.findElement(By.xpath("//div[@class='ql-editor ql-blank']"));
 		Description.sendKeys(Keys.CONTROL,"A",Keys.DELETE);
-		Description.sendKeys("fgdfg this is a content of the description of email management");
+		Description.sendKeys("fgdfgweqe this is a content of the description of email management");
 		
 		WebElement Submit=driver.findElement(By.xpath("//button[@type='submit']"));
 		Submit.click();

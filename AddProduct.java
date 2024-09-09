@@ -4,11 +4,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+//import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AddProduct 
 {
-
 WebDriver driver;
 WebDriverWait wait;		
 	
@@ -42,20 +42,51 @@ WebDriverWait wait;
 		
 		//Product Details
 		WebElement ProductName=driver.findElement(By.xpath("//input[@id='productName']"));
-		ProductName.sendKeys("Test Inventory2");
+		ProductName.sendKeys("Test Inventory 7");
+		ProductName.click();		
 		
-		WebElement Description=driver.findElement(By.xpath("//textarea[@id='description']"));
-		Description.sendKeys("This is the test Inventory2");
-		
-		WebElement ProductCode=driver.findElement(By.xpath("//input[@id='productCode']"));
-		ProductCode.sendKeys("79797927");	
-		
-		WebElement BatchNumber=driver.findElement(By.xpath("//input[@id='batchNumber']"));
-		BatchNumber.sendKeys("GHT627");	
+		WebElement producttype=driver.findElement(By.xpath("//div[@class='direct fixedHeight'][1]"));
+        producttype.click();            
+       
+        WebElement Producttypeselect = driver.findElement(By.xpath("//div[normalize-space()='Paint']"));
+        Producttypeselect.click();  
+        Thread.sleep(3000);
+   
+      //Product Standard
+      WebElement productstandard = driver.findElement(By.xpath("(//div[@class='direct fixedHeight'])[2]"));
+      productstandard.click();
+      
+      WebElement productstandardselect = driver.findElement(By.xpath("//div[normalize-space()='Non Standard Product']"));
+      productstandardselect.click();
+      Thread.sleep(2000);      
+      
+      
+    	WebElement ProductCode=driver.findElement(By.xpath("//input[@id='productCode']"));
+		ProductCode.sendKeys("79797927");        
+		WebElement HSNCode=driver.findElement(By.xpath("//input[@id='hsnCode']"));
+		HSNCode.sendKeys("32099090");
 		
 		try
 		{
-		WebElement Brand=driver.findElement(By.xpath("//div[contains(@class,'direct fixedHeight')]"));
+		Thread.sleep(6000);	
+		WebElement HSNCode1 = driver.findElement(By.xpath("//span[normalize-space()='32099090']"));
+      	HSNCode1.click();       
+		}
+
+        
+        
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+        
+      
+		WebElement Description=driver.findElement(By.xpath("//textarea[@id='description']"));
+		Description.sendKeys("This is the test Inventory2");
+		
+		try
+		{
+		WebElement Brand=driver.findElement(By.xpath("(//div[@class='direct fixedHeight'])[3]"));
 		Brand.click();
 		Thread.sleep(2000);
 		
@@ -69,33 +100,40 @@ WebDriverWait wait;
 			e.printStackTrace();
 		}
 		
-		WebElement Category=driver.findElement(By.xpath("//div[contains(@class,'drop-down-selector hide-drop-scroll')]//div[contains(@class,'direct fixedHeight')]"));
+		WebElement Category=driver.findElement(By.xpath("(//div[@class='direct fixedHeight'])[4]"));
 		Category.click();
-		WebElement Category1=driver.findElement(By.xpath("//span[normalize-space()='Top Coat']"));
+		WebElement Category1=driver.findElement(By.xpath("//span[normalize-space()='Tinters']"));
 		Category1.click();		
 		
-		WebElement SubCategory=driver.findElement(By.xpath("//body/div[@id='root']/div[contains(@class,'container popUp-container')]/div[contains(@class,'app-container')]/div[contains(@class,'home-container')]/div[contains(@class,'mainExelPop show_component-common-animation')]/div[contains(@class,'modelExel')]/div[contains(@class,'modelEx_content singleAdd')]/form[contains(@class,'scrollForm')]/div[contains(@class,'form-content')]/div[contains(@class,'form-group form')]/div[5]/div[1]/div[1]/div[2]/div[1]"));
-		SubCategory.click();		
-		WebElement SubCategory1=driver.findElement(By.xpath("//span[normalize-space()='Acraylic Top Coat']"));
+		WebElement SubCategory1=driver.findElement(By.xpath("(//div[@class='direct fixedHeight'])[5]"));
 		SubCategory1.click();
 		Thread.sleep(2000);
+		WebElement SubCategoryselect1=driver.findElement(By.xpath("//span[normalize-space()='Test']"));
+		SubCategoryselect1.click();
+		Thread.sleep(2000);		
 		
-				
+		WebElement Packsize=driver.findElement(By.xpath("//input[@id='packSize']"));
+		Packsize.sendKeys("10");	
+		Thread.sleep(2000);   
+        
+        //Pack Quantity
+        WebElement quantity = driver.findElement(By.xpath("//input[@id='packQuantity']"));
+        quantity.sendKeys("8.5"); 
+        		
 		try
 		{
 		WebElement Color = driver.findElement(By.xpath("//input[@id='color']"));
-        Color.sendKeys("Red Violet");  
+        Color.sendKeys("Red");  
 		}
 		catch(Exception e)
 		{
 			e.printStackTrace();
 		}
 		
-		
 		try
 		{
 		Thread.sleep(6000);	
-        WebElement Color1 = driver.findElement(By.xpath("//div[@class=\"drop-down-item2\"]//span[text()=\"Red violet\"]"));
+        WebElement Color1 = driver.findElement(By.xpath("//div[@class='drop-down-item2 selectedDropBox']"));
         Color1.click();
         //Thread.sleep(5000);
         Thread.onSpinWait();
@@ -105,18 +143,8 @@ WebDriverWait wait;
 		{
 			e.printStackTrace();
 		}
-        
-              			
-		WebElement Packsize=driver.findElement(By.xpath("//input[@id='packSize']"));
-		Packsize.sendKeys("5");	
-		Thread.sleep(2000);
 
-		WebElement UOM=driver.findElement(By.xpath("//div[@class='direct ']"));		
-		UOM.click();		
-		WebElement UOM1=driver.findElement(By.xpath("//div[@class='col-2']//div[8]"));
-		UOM1.click();
-		
-		try
+	try
 		{
 		WebElement PaintType = driver.findElement(By.xpath("//input[@id='paintType']"));
 		PaintType.sendKeys("Oil Based");  
@@ -125,7 +153,6 @@ WebDriverWait wait;
 		{
 			e.printStackTrace();
 		}
-		
 		
 		try
 		{
@@ -139,9 +166,8 @@ WebDriverWait wait;
 		catch(Exception e)
 		{
 			e.printStackTrace();
-		}
+		}		
 		
-				
 		try
 		{
 		WebElement FinishType = driver.findElement(By.xpath("//input[@id='finish']"));		
@@ -151,8 +177,7 @@ WebDriverWait wait;
 		{
 			e.printStackTrace();
 		}
-		
-		
+	
 		try
 		{
 		Thread.sleep(6000);	
@@ -164,36 +189,14 @@ WebDriverWait wait;
 		catch(Exception e)
 		{
 			e.printStackTrace();
-		}
+		}	
 
-		
-//		WebElement FinishType=driver.findElement(By.xpath("//input[@id='finish']"));
-//		FinishType.sendKeys("Mat Finish");		
-
-		WebElement HSNCode=driver.findElement(By.xpath("//input[@id='hsnCode']"));
-		HSNCode.sendKeys("32099090");
-		
-		try
-		{
-		Thread.sleep(6000);	
-        WebElement HSNCode1 = driver.findElement(By.xpath("//span[normalize-space()='32099090']"));
-        HSNCode1.click();
-        
-		}
-		
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}
-		
 		WebElement UnitPrice=driver.findElement(By.xpath("//input[@id='unitPrice']"));
 		UnitPrice.sendKeys("20");		
-		//WebElement CostPrice=driver.findElement(By.xpath("//input[@id='costPrice']"));
-		//CostPrice.sendKeys("300");	
-		WebElement SellingPrice=driver.findElement(By.xpath("//input[@id='sellingPrice']"));
-		SellingPrice.sendKeys("300");					
-		WebElement Savebutton=driver.findElement(By.xpath("//button[@type='submit']"));
-		Savebutton.click();	
+				
+		WebElement Savebutton=driver.findElement(By.xpath("//button[normalize-space()='Save']"));
+		Savebutton.click();			
+	
 	}
 	
 		
@@ -203,6 +206,10 @@ WebDriverWait wait;
 		AddProduct obj=new AddProduct();
 		obj.chrome();
 		obj.AddProductclick();
+		
+		
+		
+		//Assertion.assertEqual
 	}
 
 }

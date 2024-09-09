@@ -29,8 +29,8 @@ public class BuyerSupplierMulRecordAddByExcel
 
 			//login
 			WebElement Username=driver.findElement(By.xpath("//input[@id='email']"));
-			Username.sendKeys("admin@poonamcoatings.com");		
-			
+			Username.sendKeys("admin@poonamcoatings.com");	
+						
 			WebElement Password=driver.findElement(By.xpath("//input[@id='password']"));
 			Password.sendKeys("Super@1234");
 			

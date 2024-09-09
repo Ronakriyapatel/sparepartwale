@@ -42,13 +42,13 @@ public class CreateNewPaintaddbysheet
    		Thread.sleep(8000);			
    	}
     
-    public void createnewporduct(String ProductName, String ProductStd, String ProductCode,	String HSNCode,	
-    							String Brand, String Category, String SubCategory, String SubChildCategory,	
+    public void createnewporduct(String PaintName, String ProductStd, String ProductCode, String HSNId, String Brand, String Category, String SubCategory, String SubChildCategory,	
     							String BasePaint1, String ProportionOfPaint1, String Tinter1, String ProportionOfTinter,
     							String BasePaint2, String ProportionOfPaint2, String PackSize, String ProductQtyLtr, 
     							String Color, String PaintType, String FinishType, String CostPrice, String MarginPer, String SellingPer) throws InterruptedException
-    {
-    	WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));   	
+    	
+    	{
+    	WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));   
     	
     	try
     	{
@@ -57,39 +57,44 @@ public class CreateNewPaintaddbysheet
 
         WebElement Createnewdproduct = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@class='btn-primary header-btn header-btn-second']")));
         Createnewdproduct.click();
+        
 
-        //Product Name
-        WebElement productname = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='productName']")));
-        productname.sendKeys(ProductName);
-                    
+        // Paint Name
+        WebElement Paintname = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='paintName']")));
+        Paintname.sendKeys(PaintName);
+        
+        
         //Product Standard
-        WebElement productstandard = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='direct fixedHeight'])[2]")));
+        WebElement productstandard = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='direct fixedHeight'])[1]")));
         productstandard.click();            
         WebElement productstandardselect = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='drop-down-item']/span[normalize-space()='" + ProductStd + "']")));
         productstandardselect.click();
         Thread.sleep(2000);
                     
         //Product code
-	     WebElement productcode = driver.findElement(By.xpath("//input[@id='productCode']"));
-	     productcode.sendKeys(ProductCode);
-                    
-        // HSNCode
-        WebElement hsnCode = driver.findElement(By.xpath("//input[@id='hsnCode']"));
-        hsnCode.sendKeys(HSNCode);
+        WebElement productcode = driver.findElement(By.xpath("//input[@id='productCode']"));
+        productcode.sendKeys(ProductCode);        
+       
         
-        try            
+        WebElement hsnidInput = driver.findElement(By.xpath("//input[@id='hsnId']"));
+        hsnidInput.sendKeys(HSNId);
+
+        // Wait for the HSN dropdown to appear and select the correct value
+        try
         {
-            Thread.sleep(2000);
-            WebElement hsnCode1 = driver.findElement(By.xpath("//span[normalize-space()='" + HSNCode + "']"));
-            hsnCode1.click();
+            Thread.sleep(2000); // wait for dropdown to appear
+            WebElement hsnDropdown = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='hsnSelectBox']")));
+            WebElement hsnidSelect = hsnDropdown.findElement(By.xpath("//span[normalize-space()='" + HSNId + "']"));
+            hsnidSelect.click();
         } 
         
-        catch (Exception e)            
+        catch (Exception e) 
         {
-            //System.out.println("HSN Code selection issue for product: " + ProductName);
+            System.out.println("HSN Code selection issue: " + HSNId);
             e.printStackTrace();
         }
-              
+        
+        
         // Product - Select Brand
         WebElement brandOption = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='direct fixedHeight'])[3]")));
         brandOption.click();
@@ -136,8 +141,8 @@ public class CreateNewPaintaddbysheet
     	 basepaint2.sendKeys(BasePaint2);    	 
     	 Thread.sleep(2000);      	
     	 
-    	 WebElement PropPaint1 = driver.findElement(By.xpath("//input[@id='proportionPaint1']"));
-    	 PropPaint1.sendKeys(BasePaint1);     
+    	 WebElement PropPaint2 = driver.findElement(By.xpath("//input[@id='proportionOfPaint2']"));
+    	 PropPaint2.sendKeys(ProportionOfPaint2);     
     	 
 //    	 WebElement uom3 = driver.findElement(By.xpath("//input[@id='basePaint1']"));
 //    	 uom3.sendKeys(UOM);    	 
@@ -187,7 +192,7 @@ public class CreateNewPaintaddbysheet
          
          catch (Exception e) 
          {
-             System.out.println("Paint type selection issue for product:" + ProductName);
+             System.out.println("Paint type selection issue for product:" + PaintName);
              e.printStackTrace();
          }
 
@@ -203,10 +208,9 @@ public class CreateNewPaintaddbysheet
          }
          catch (Exception e) 
          {
-             System.out.println("Finish type selection issue for product: " + ProductName);
-            e.printStackTrace();
+             System.out.println("Finish type selection issue for product: " + PaintName);
+             e.printStackTrace();
          }         
-
 
          // SellingPrice
          WebElement costprice = driver.findElement(By.xpath("//input[@id='sellingPrice']"));
@@ -218,9 +222,10 @@ public class CreateNewPaintaddbysheet
          
          // Save Button
          WebElement savebutton1 = driver.findElement(By.xpath("//button[@type='submit']"));
-         savebutton1.click();   
-      
+         savebutton1.click();        
     }
+    
+    
     
     public void CreateMulProductFromExcel(String excelFilePath) throws IOException, InterruptedException 
     {
@@ -228,15 +233,15 @@ public class CreateNewPaintaddbysheet
 
         try (Workbook workbook = new XSSFWorkbook(inputStream)) 
         {
-            Sheet sheet2 = workbook.getSheetAt(0);
+            Sheet Sheet2 = workbook.getSheetAt(0);
             DataFormatter dataFormatter = new DataFormatter();
-            for (int i = 1; i <= sheet2.getLastRowNum(); i++)
+            for (int i = 1; i < Sheet2.getLastRowNum(); i++)
             {
-                Row row = sheet2.getRow(i);
-                String ProductName = dataFormatter.formatCellValue(row.getCell(0));
+                Row row = Sheet2.getRow(i);
+                String PaintName = dataFormatter.formatCellValue(row.getCell(0));
                 String ProductStd = dataFormatter.formatCellValue(row.getCell(1));
                 String ProductCode = dataFormatter.formatCellValue(row.getCell(2));
-                String HSNCode = dataFormatter.formatCellValue(row.getCell(4));                
+                String HSNId = dataFormatter.formatCellValue(row.getCell(4));                
                 String Brand = dataFormatter.formatCellValue(row.getCell(5));
                 String Category = dataFormatter.formatCellValue(row.getCell(6));
                 String SubCategory = dataFormatter.formatCellValue(row.getCell(7));
@@ -255,9 +260,8 @@ public class CreateNewPaintaddbysheet
                 String FinishType = dataFormatter.formatCellValue(row.getCell(20));
                 String CostPrice = dataFormatter.formatCellValue(row.getCell(21));
                 String SellingPrice = dataFormatter.formatCellValue(row.getCell(22));
-                createnewporduct(ProductName, ProductStd, ProductCode, HSNCode, Brand, Category, SubCategory, SubChildCategory, BasePaint1,	ProportionOfPaint1,	UOM, Tinter1, ProportionOfTinter, BasePaint2, ProportionOfPaint2, PackSize, ProductQtyLtr, Color, PaintType, FinishType, CostPrice, SellingPrice);
-        	  
-            }
+                createnewporduct(PaintName, ProductStd, ProductCode, HSNId, Brand, Category, SubCategory, SubChildCategory, BasePaint1,	ProportionOfPaint1,	UOM, Tinter1, ProportionOfTinter, BasePaint2, ProportionOfPaint2, PackSize, ProductQtyLtr, Color, PaintType, FinishType, CostPrice, SellingPrice);
+              }
         }
     }
     
