@@ -91,7 +91,7 @@ public class UserManagementMultipleEntries
             Thread.sleep(2000);            
 
             //Department Selection
-            WebElement departmentDropdown = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div)[92]")));
+            WebElement departmentDropdown = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='direct fixedHeight'])[3]")));
             departmentDropdown.click();
             WebElement departmentSelect = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='drop-down-item']/span[normalize-space()='" + department + "']")));
             departmentSelect.click();
@@ -114,6 +114,11 @@ public class UserManagementMultipleEntries
     		//Submit privileges
     		WebElement Submitpriv=driver.findElement(By.xpath("//div[@class='privileges-submit']//button[contains(text(),'Submit')]"));
     		Submitpriv.click();	
+    		
+    		
+    		//Main User add Submit
+    		WebElement submit=driver.findElement(By.cssSelector(".btn-primary:nth-child(2)"));
+    		submit.click();
     			
       } 
         

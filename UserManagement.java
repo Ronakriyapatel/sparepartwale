@@ -211,8 +211,8 @@ public class UserManagement
 		
 		
 		//Main User add Submit
-		WebElement submit=driver.findElement(By.cssSelector(".btn-primary:nth-child(2)"));
-		submit.click();
+		WebElement submitmul=driver.findElement(By.cssSelector(".btn-primary:nth-child(2)"));
+		submitmul.click();
 		
 	}
 	
@@ -221,19 +221,20 @@ public class UserManagement
 	{
 		
 		//Click on Setting 
-		WebElement Settingclick=driver.findElement(By.xpath("//span[normalize-space()='Settings']"));		
+		WebElement Settingclick=driver.findElement(By.xpath("//span[@class=\"scc-name\" and text()=\"Settings\"]"));		
 		Settingclick.click();
 		
 		//Click on UserManagement
-		WebElement UserManagementclick=driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/div[10]/div[3]"));
+		WebElement UserManagementclick=driver.findElement(By.xpath("//div[normalize-space()='User Management']"));
 		UserManagementclick.click();
 		Thread.sleep(2000);
+				
 		
 		int row=9;
 		for(int i=0;i<=row;i++)
 		{		
 		//delete User							
-		WebElement deleteuser=driver.findElement(By.xpath("//tbody/tr[1]/td[6]/div[1]/button[3]"));
+		WebElement deleteuser=driver.findElement(By.xpath("//tbody/tr[2]/td[7]/div[1]/button[3]/span[1]"));	
 		deleteuser.click();	
 		
 		WebElement deleteclick=driver.findElement(By.xpath("//button[@class='del-conform']"));
