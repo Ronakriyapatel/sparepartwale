@@ -3,6 +3,7 @@ package Testing;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 //import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -46,11 +47,10 @@ public class UserManagement
         SettingClick.click();
         Thread.sleep(2000);     	
         
-        WebElement UserManagementClick = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(text(),'User Management')]")));
+        WebElement UserManagementClick = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[normalize-space()='User Management']")));
         UserManagementClick.click();
-        Thread.sleep(2000);		        
-		
-				
+        Thread.sleep(2000);	       
+						
 		//Add User
 		WebElement UserManagementAdd=driver.findElement(By.xpath("//button[@class='btn-primary header-btn']"));
 		UserManagementAdd.click();	
@@ -72,23 +72,25 @@ public class UserManagement
 		PhoneNumber.sendKeys("9785653456");
 		
 		//Gender
-		WebElement Gender=driver.findElement(By.xpath("//body/div[@id='root']/div[@class='container']/div[@class='app-container']/div[@class='home-container']/div[@class='main-container']/div[@class='main-content']/div[@class='profile_form_box']/form[@class='form-content']/div[@class='form-group form']/div[4]/div[1]/div[1]/div[2]/div[1]"));
+		//WebElement Gender=driver.findElement(By.xpath("//body/div[@id='root']/div[@class='container']/div[@class='app-container']/div[@class='home-container']/div[@class='main-container']/div[@class='main-content']/div[@class='profile_form_box']/form[@class='form-content']/div[@class='form-group form']/div[4]/div[1]/div[1]/div[2]/div[1]"));
+		
+		WebElement Gender=driver.findElement(By.xpath("//div[@class=\"direct fixedHeight\"]  "));
 		Gender.click();	
 		WebElement Genderselect=driver.findElement(By.xpath("//span[normalize-space()='Female']"));
 		Genderselect.click();	
 				
 		//DOB
-		WebElement DOB=driver.findElement(By.xpath("//input[@id='dob']"));
+		WebElement DOB=driver.findElement(By.xpath("//input[@type=\"date\"]"));
 		DOB.sendKeys("08-01-2001");
 		
 		//Role
-		WebElement Role=driver.findElement(By.xpath("//body/div[@id='root']/div[@class='container']/div[@class='app-container']/div[@class='home-container']/div[@class='main-container']/div[@class='main-content']/div[@class='profile_form_box']/form[@class='form-content']/div[@class='form-group form']/div[5]/div[1]/div[1]/div[2]/div[1]"));
+		WebElement Role=driver.findElement(By.xpath("(//div[@class='direct fixedHeight'])[2]"));
 		Role.click();
 		WebElement RoleSelect=driver.findElement(By.xpath("//span[normalize-space()='Admin']"));
 		RoleSelect.click();	
 		
 		//Select Department
-		WebElement Department=driver.findElement(By.xpath("//body/div[@id='root']/div[@class='container']/div[@class='app-container']/div[@class='home-container']/div[@class='main-container']/div[@class='main-content']/div[@class='profile_form_box']/form[@class='form-content']/div[@class='form-group form']/div[@class='col-2']/div[2]/div[1]/div[2]/div[1]"));
+		WebElement Department=driver.findElement(By.xpath("(//div[@class='direct fixedHeight'])[3]"));
 		Department.click();
 		WebElement DepartmentSelect=driver.findElement(By.xpath("//span[normalize-space()='Administration']"));
 		DepartmentSelect.click();		
@@ -114,87 +116,105 @@ public class UserManagement
 		WebElement MainSubmit=driver.findElement(By.xpath("//button[@type='submit']"));
 		MainSubmit.click();	
 		
+		//Successfully run, code updated on 10.09.24
+		
 	}
 	
 	
-//	public void useredit() throws InterruptedException
-//	{
-//		//Click on Setting 
-//		WebElement Settingclick=driver.findElement(By.xpath("//span[normalize-space()='Settings']"));
-//		Settingclick.click();
-//		
-//		//Click on UserManagement
-//		WebElement UserManagementclick=driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/div[13]/div[3]"));
-//		UserManagementclick.click();
-//		Thread.sleep(2000);
-//		
-//		//Edit User		
-//		WebElement EditButtonClick1=driver.findElement(By.xpath("//tbody/tr[3]/td[5]/button[1]/span[1]"));
-//		EditButtonClick1.click();
-//				
-//		//First Name
-//		WebElement FirstNameEdit=driver.findElement(By.xpath("//input[@id='first_name']"));
-//		FirstNameEdit.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
-//		FirstNameEdit.sendKeys("Ronak1");	
-//		
-//		//Last Name
-//		WebElement LastNameEdit=driver.findElement(By.xpath("//input[@id='last_name']"));
-//		LastNameEdit.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
-//		LastNameEdit.sendKeys("Patel1");	
-//				
-//		//EmailId
-//		WebElement EmailIdEdit=driver.findElement(By.xpath("//input[@id='email']"));
-//		EmailIdEdit.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
-//		EmailIdEdit.sendKeys("ronakriya1@gmail.com");	
-//		
-//		//PhoneNumber
-//		WebElement PhoneNumberEdit=driver.findElement(By.xpath("//input[@id='phone_no']"));
-//		PhoneNumberEdit.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
-//		PhoneNumberEdit.sendKeys("9787856456");
-//		
-//		//Gender
-//		WebElement GenderEdit=driver.findElement(By.xpath("//body/div[@id='root']/div[@class='container']/div[@class='app-container']/div[@class='home-container']/div[@class='main-container']/div[@class='main-content']/div[@class='profile_form_box']/form[@class='form-content']/div[@class='form-group form']/div[4]/div[1]/div[1]/div[2]/div[1]"));
-//		GenderEdit.click();		
-//		WebElement GenderselectEdit=driver.findElement(By.xpath("//span[normalize-space()='Female']"));
-//		GenderselectEdit.click();	
-//				
-//		//DOB
-//		WebElement DOBEdit=driver.findElement(By.xpath("//input[@id='dob']"));
-//		DOBEdit.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
-//		DOBEdit.sendKeys("01-03-2001");
-//		
-//		//Role
-//		WebElement RoleEdit=driver.findElement(By.xpath("//body/div[@id='root']/div[@class='container']/div[@class='app-container']/div[@class='home-container']/div[@class='main-container']/div[@class='main-content']/div[@class='profile_form_box']/form[@class='form-content']/div[@class='form-group form']/div[5]/div[1]/div[1]/div[2]/div[1]"));
-//		RoleEdit.click();		
-//		WebElement RoleSelectEdit=driver.findElement(By.xpath("//span[normalize-space()='Admin']"));
-//		RoleSelectEdit.click();	
-//		
-//		//Department		
-//		WebElement departmentselect=driver.findElement(By.xpath("//div[normalize-space()='Administration']"));
-//		departmentselect.click();	
-//		
-//	
+	public void useredit() throws InterruptedException
+	{
+		//Click on Setting 
+		WebElement Settingclick=driver.findElement(By.xpath("//span[@class=\"scc-name\" and text()=\"Settings\"]"));
+		Settingclick.click();
+		
+		//Click on UserManagement
+		WebElement UserManagementclick=driver.findElement(By.xpath("//div[normalize-space()='User Management']"));
+		UserManagementclick.click();
+		Thread.sleep(2000);
+		
+		//View User		
+		WebElement ViewButtonClick1=driver.findElement(By.xpath("(//span[contains(text(),'visibility')])[1]"));
+		ViewButtonClick1.click();
+		
+		//Click on Edit button
+		WebElement EditButtonClick1=driver.findElement(By.xpath("(//button[@type='button'])[2]"));
+		EditButtonClick1.click();
+					
+		//First Name
+		WebElement FirstNameEdit=driver.findElement(By.xpath("//input[@id='first_name']"));
+		FirstNameEdit.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
+		FirstNameEdit.sendKeys("Ronak1");	
+		
+		//Last Name
+		WebElement LastNameEdit=driver.findElement(By.xpath("//input[@id='last_name']"));
+		LastNameEdit.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
+		LastNameEdit.sendKeys("Patel1");	
+				
+		//EmailId
+		WebElement EmailIdEdit=driver.findElement(By.xpath("//input[@id='email']"));
+		EmailIdEdit.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
+		EmailIdEdit.sendKeys("ronakriya1@poonamcoatings.com");	
+		
+		//PhoneNumber
+		WebElement PhoneNumberEdit=driver.findElement(By.xpath("//input[@id='phone_no']"));
+		PhoneNumberEdit.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
+		PhoneNumberEdit.sendKeys("9787856456");
+		
+		//Gender
+		WebElement GenderEdit=driver.findElement(By.xpath("//div[@class=\"direct fixedHeight\"]"));
+		GenderEdit.click();		
+		WebElement GenderselectEdit=driver.findElement(By.xpath("//span[normalize-space()='Male']"));
+		GenderselectEdit.click();	
+				
+		//DOB
+		WebElement DOBEdit=driver.findElement(By.xpath("//input[@id='dob']"));
+		DOBEdit.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
+		DOBEdit.sendKeys("02-03-2001");
+		
+		//Role
+		WebElement RoleEdit=driver.findElement(By.xpath("(//div[@class='direct fixedHeight'])[2]"));
+		RoleEdit.click();		
+		WebElement RoleSelectEdit=driver.findElement(By.xpath("//span[normalize-space()='Admin']"));
+		RoleSelectEdit.click();	
+		
+		//Department	
+		//Select Department
+		WebElement EditDepartment=driver.findElement(By.xpath("(//div[@class='direct fixedHeight'])[3]"));
+		EditDepartment.click();
+		WebElement Editdepartmentselect=driver.findElement(By.xpath("//div[normalize-space()='Marketing']"));
+		Editdepartmentselect.click();	
+			
 //		//Privileges
-//		WebElement PrivilegesEdit=driver.findElement(By.xpath("//button[normalize-space()='Add Privileges']"));
-//		PrivilegesEdit.click();
-//		
-//		WebElement PrivilegesReadEdit=driver.findElement(By.xpath("//tbody/tr[1]/td[2]/input[1]"));		
-//		WebElement PrivilegesWriteEdit=driver.findElement(By.xpath("//tbody/tr[1]/td[3]/input[1]"));		
-//		WebElement PrivilegesDeleteEdit=driver.findElement(By.xpath("//tbody/tr[1]/td[4]/input[1]"));
-//		
-//		PrivilegesReadEdit.click();
-//		PrivilegesWriteEdit.click();
-//		PrivilegesDeleteEdit.click();
-//		
+//		WebElement PrivilegesEdit=driver.findElement(By.xpath("//button[normalize-space()='Edit Privileges']"));
+//		PrivilegesEdit.click();		
+//		WebElement PrivilegesReadEdit=driver.findElement(By.xpath("//tbody/tr[2]/td[1]/input[1]"));	
+//		PrivilegesReadEdit.click();		
+//		WebElement PrivilegeswirteEdit=driver.findElement(By.xpath("//tbody/tr[1]/td[3]/input[1]"));	
+//		PrivilegeswirteEdit.click();				
+		
 //		//Submit privileges
-//		WebElement SubmitprivEdit=driver.findElement(By.xpath("//div[@class='privileges-submit']//button[contains(text(),'Submit')]"));
-//		SubmitprivEdit.click();	
-//			
-//		//Main User add Submit
-//		WebElement MainSubmitEdit=driver.findElement(By.xpath("//button[@type='submit']"));
-//		MainSubmitEdit.click();			
-//				
-//	}
+	
+
+		try
+		{
+			
+			 WebElement prevsubmit=driver.findElement(By.cssSelector(".privileges-submit > button"));
+			 prevsubmit.click();
+			 	
+		}
+			
+		catch(Exception e)
+		{
+				e.printStackTrace();			
+				
+		}
+		
+		
+		//Main User add Submit
+		WebElement submit=driver.findElement(By.cssSelector(".btn-primary:nth-child(2)"));
+		submit.click();
+		
+	}
 	
 	
 	public void userdelete() throws InterruptedException
@@ -217,7 +237,9 @@ public class UserManagement
 		deleteuser.click();	
 		
 		WebElement deleteclick=driver.findElement(By.xpath("//button[@class='del-conform']"));
-		deleteclick.click();	
+		deleteclick.click();
+		
+		//Successfully run, Code updated on 10.09.24
 	}}
 	
 	
@@ -225,9 +247,9 @@ public class UserManagement
 	{		
 		UserManagement obj=new UserManagement();
 		obj.chrome();
-		obj.useradd();
+		//obj.useradd();
 		//obj.useredit();	
-		//obj.userdelete();
+		obj.userdelete();
 	}
 
 }
