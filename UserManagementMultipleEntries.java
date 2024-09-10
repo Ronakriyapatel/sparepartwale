@@ -119,6 +119,8 @@ public class UserManagementMultipleEntries
     		//Main User add Submit
     		WebElement submit=driver.findElement(By.cssSelector(".btn-primary:nth-child(2)"));
     		submit.click();
+    		
+    		//successfully run , code updated on 10.09.24
     			
       } 
         
