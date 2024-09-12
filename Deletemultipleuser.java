@@ -36,14 +36,24 @@ public class Deletemultipleuser
     {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-        // Navigate to Settings and Email Management
-        WebElement SettingClick = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[normalize-space()='Settings']")));
-        SettingClick.click();
-        Thread.sleep(2000);
-
-        WebElement UserManagementClick = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(text(),'User Management')]")));
-        UserManagementClick.click();
-        Thread.sleep(2000);
+//        // Navigate to Settings and Email Management
+//        WebElement SettingClick = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[normalize-space()='Settings']")));
+//        SettingClick.click();
+//        Thread.sleep(2000);
+//
+//        WebElement UserManagementClick = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(text(),'User Management')]")));
+//        UserManagementClick.click();
+//        Thread.sleep(2000);
+        
+        
+        //Click on Setting 
+      	WebElement Settingclick=driver.findElement(By.xpath("//span[@class=\"scc-name\" and text()=\"Settings\"]"));		
+      	Settingclick.click();
+      		
+      	//Click on UserManagement
+      	WebElement UserManagementclick=driver.findElement(By.xpath("//div[normalize-space()='User Management']"));
+      	UserManagementclick.click();
+      	Thread.sleep(2000);
 
         // Find total number of rows in the table
         int rowCount = 3;       
@@ -53,7 +63,7 @@ public class Deletemultipleuser
             try 
             {
                 // Find the delete button for each row
-                WebElement deleteButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//tbody/tr[" + i + "]/td[6]/div[1]/button[3]/span[1]")));
+                WebElement deleteButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//tbody/tr[" + i + "]/td[7]/div[1]/button[3]/span[1]")));
                 deleteButton.click();
                 Thread.sleep(2000);
 

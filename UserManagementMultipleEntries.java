@@ -123,7 +123,6 @@ public class UserManagementMultipleEntries
     		//successfully run , code updated on 10.09.24
     			
       } 
-        
         catch (Exception e) 
         {
             e.printStackTrace();
@@ -141,6 +140,7 @@ public class UserManagementMultipleEntries
 
             for (int i = 1; i < user.getLastRowNum(); i++) 
             {
+            	
                 Row row = user.getRow(i);
                 String firstName = dataFormatter.formatCellValue(row.getCell(0));
                 String lastName = dataFormatter.formatCellValue(row.getCell(1));
@@ -149,11 +149,9 @@ public class UserManagementMultipleEntries
                 String gender = dataFormatter.formatCellValue(row.getCell(4));
                 String dob = dataFormatter.formatCellValue(row.getCell(5));
                 String role = dataFormatter.formatCellValue(row.getCell(6));
-                String department = dataFormatter.formatCellValue(row.getCell(7));
-                String privileges = dataFormatter.formatCellValue(row.getCell(8));
-
-                // Add user with extracted details
-             //   System.out.println("Adding user: " + firstName + " " + lastName);
+                String department = dataFormatter.formatCellValue(row.getCell(7));               
+                String privileges = dataFormatter.formatCellValue(row.getCell(8));    
+                 
                 addAdminUser(firstName, lastName, email, phoneNumber, gender, dob, role, department, privileges);
             }
         }

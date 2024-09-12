@@ -217,31 +217,51 @@ public class UserManagement
 	}
 	
 	
-	public void userdelete() throws InterruptedException
-	{
-		
-		//Click on Setting 
-		WebElement Settingclick=driver.findElement(By.xpath("//span[@class=\"scc-name\" and text()=\"Settings\"]"));		
-		Settingclick.click();
-		
-		//Click on UserManagement
-		WebElement UserManagementclick=driver.findElement(By.xpath("//div[normalize-space()='User Management']"));
-		UserManagementclick.click();
-		Thread.sleep(2000);
-				
-		
-		int row=9;
-		for(int i=0;i<=row;i++)
-		{		
-		//delete User							
-		WebElement deleteuser=driver.findElement(By.xpath("//tbody/tr[2]/td[7]/div[1]/button[3]/span[1]"));	
-		deleteuser.click();	
-		
-		WebElement deleteclick=driver.findElement(By.xpath("//button[@class='del-conform']"));
-		deleteclick.click();
-		
-		//Successfully run, Code updated on 10.09.24
-	}}
+    
+ public void deletemuluser() throws InterruptedException 
+ {
+	 	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	 	//Click on Setting 
+   		WebElement Settingclick=driver.findElement(By.xpath("//span[@class=\"scc-name\" and text()=\"Settings\"]"));		
+   		Settingclick.click();
+   		
+   		//Click on UserManagement
+   		WebElement UserManagementclick=driver.findElement(By.xpath("//div[normalize-space()='User Management']"));
+   		UserManagementclick.click();
+   		Thread.sleep(2000);
+
+   		// Find total number of rows in the table
+   		int rowCount = 3;       
+    
+   		for (int i = 1; i <= rowCount; i++) 
+   		{
+   			try 
+   			{
+             // Find the delete button for each row
+             WebElement deleteButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//tbody/tr[" + i + "]/td[7]/div[1]/button[3]/span[1]")));
+             deleteButton.click();
+             Thread.sleep(2000);
+
+             // Confirm delete
+             WebElement confirmDeleteButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@class='del-conform']")));
+             confirmDeleteButton.click();
+             Thread.sleep(3000);			 	//Adjust this wait time as necessary
+
+             // Print confirmation message if needed
+             System.out.println("Deleted record " + i);
+         } 
+      
+         catch (Exception e) 
+         {
+             // Log if any exception occurs during deletion
+             System.out.println("Error deleting record " + i + ": " + e.getMessage());
+         }      
+     }
+
+     //Output message when all records are deleted
+     System.out.println("All records deleted.");      
+ 
+}
 	
 	
 	public static void main(String[] args) throws InterruptedException
@@ -250,7 +270,7 @@ public class UserManagement
 		obj.chrome();
 		//obj.useradd();
 		//obj.useredit();	
-		obj.userdelete();
+		obj.deletemuluser();
 		//run successfully
 	}
 

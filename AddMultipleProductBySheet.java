@@ -244,6 +244,8 @@ public class AddMultipleProductBySheet
                 String UnitPrice = dataFormatter.formatCellValue(row.getCell(16));
                 String SellingPrice = dataFormatter.formatCellValue(row.getCell(17));
                 AddProductInventory(ProductName, ProductType, ProductStandard, ProductCode, HSNCode, Description, Brand, Category, SubCategory, SubChildCategory, PackSize, UOM, Quantity, Color, PaintType, FinishType, UnitPrice, SellingPrice);
+            
+            
             }
         }
     }
@@ -253,5 +255,6 @@ public class AddMultipleProductBySheet
         AddMultipleProductBySheet addProducts = new AddMultipleProductBySheet();
         addProducts.chrome();
         addProducts.addMulProductFromExcel("C:\\Users\\Aaditya\\eclipse-workspace\\PoonamCoatingsCRM\\src\\Testing\\Product Sheet.xlsx");
+        //run successfully
     }
 }

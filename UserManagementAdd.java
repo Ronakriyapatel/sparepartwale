@@ -35,8 +35,7 @@ public class UserManagementAdd
 		}	
 		
 		public void useradd1(String firstname[], String lastname[], String emailid[], String phone[], String gender[], String dob[], String role[], String department[]) throws InterruptedException
-		{		 
-			
+		{		
 			
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	        WebElement SettingClick = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[normalize-space()='Settings']")));
@@ -50,9 +49,9 @@ public class UserManagementAdd
 	        Thread.sleep(2000);
 	        
 	        // Navigate to Settings and Email Management
-			int rowCount = 2;  
+			int rowCount = 4;  
 			
-			for(int i=0;i<rowCount;i++)	        
+			for(int i=0;i<=rowCount;i++)	        
 		    { 
 			
 			//Add User
@@ -80,42 +79,30 @@ public class UserManagementAdd
 			PhoneNumber.sendKeys(phone[i]);
 			
 			//Gender
-			WebElement Gender=driver.findElement(By.xpath("//body/div[@id='root']/div[@class='container']/div[@class='app-container']/div[@class='home-container']/div[@class='main-container']/div[@class='main-content']/div[@class='profile_form_box']/form[@class='form-content']/div[@class='form-group form']/div[4]/div[1]/div[1]/div[2]/div[1]"));
-			Gender.click();	
-			
+			WebElement Gender=driver.findElement(By.xpath("//div[@class=\"direct fixedHeight\"]"));
+			Gender.click();				
 			WebElement Genderselect=driver.findElement(By.xpath("//span[normalize-space()='" + gender[i] + "']"));
 			Gender.click();
-			Genderselect.click();	
-					
+			Genderselect.click();
+	
 			//DOB
-			WebElement DOB=driver.findElement(By.xpath("//input[@id='dob']"));
+			WebElement DOB=driver.findElement(By.xpath("//input[@type=\"date\"]"));
 			DOB.sendKeys(dob[i]);
-			//Thread.sleep(1000);
 			
 			//Role
-			WebElement Role=driver.findElement(By.xpath("//body/div[@id='root']/div[@class='container']/div[@class='app-container']/div[@class='home-container']/div[@class='main-container']/div[@class='main-content']/div[@class='profile_form_box']/form[@class='form-content']/div[@class='form-group form']/div[5]/div[1]/div[1]/div[2]/div[1]"));
+			WebElement Role=driver.findElement(By.xpath("(//div[@class='direct fixedHeight'])[2]"));
 			Role.click();			
 			WebElement RoleSelect=driver.findElement(By.xpath("//span[normalize-space()='" + role[i] + "']"));
 			RoleSelect.click();	
-			Thread.sleep(2000);			
+			Thread.sleep(2000);
 			
-			//Department
-			try
-			{
-			 WebElement departmentDropdown = driver.findElement(By.xpath("//body/div[@id='root']/div[@class='container']/div[@class='app-container']/div[@class='home-container']/div[@class='main-container']/div[@class='main-content']/div[@class='profile_form_box']/form[@class='form-content']/div[@class='form-group form']/div[@class='col-2']/div[2]/div[1]/div[2]/div[1]"));
-		     departmentDropdown.click();
-		    Thread.sleep(1000);		         
-			}
-			
-			catch(Exception e)
-			{
-				e.printStackTrace();
-			}		
-			
-			
-			WebElement departmentOption = driver.findElement(By.xpath("//span[normalize-space()='" + department[i] + "']"));			
-            departmentOption.click();
-					
+			//Department Selection
+            WebElement departmentDropdown = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='direct fixedHeight'])[3]")));
+            departmentDropdown.click();
+            WebElement departmentSelect = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='drop-down-item']/span[normalize-space()='" + department[i] + "']")));
+            departmentSelect.click();
+            Thread.sleep(2000);  
+							
 			//Privileges
 			WebElement Privileges=driver.findElement(By.xpath("//button[normalize-space()='Add Privileges']"));
 			Privileges.click();
@@ -144,7 +131,8 @@ public class UserManagementAdd
 		public static void main(String[] args) throws InterruptedException
 		{		
 			UserManagementAdd obj = new UserManagementAdd();
-			obj.chrome();				
+			obj.chrome();	
+			
 			String[] firstname = {"Ajeayde", "Vijadeey", "Kedridsehna"};
 			String[] lastname = {"Patedeel", "Jodesehi", "Raevdeal"};
 		    String[] emailid = {"Ajedayod@poonamcoatings.com", "Veiodjeao@poonamcoatings.com", "Krieshnadeo@poonamcoatings.com"}; 

@@ -13,7 +13,7 @@ public class Addproduct1
 	{
 		// TODO Auto-generated method stub
 		Addproduct1 obj=new Addproduct1();
-				obj.test();
+		obj.test();
 	}
 
 }
